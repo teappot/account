@@ -1,0 +1,30 @@
+{% extends "account/form.html" %}
+{% load i18n %}
+
+{% block form %}
+<div class="card-title">
+    <h1>{% trans "Registrar Cuenta" %}</h1>
+</div>
+<hr />
+<div class="col-12">
+    <form class="form-horizontal" method="post" action="." hx-boost="false">
+        
+        {{ block.super }}
+
+        <div class="row form-group">
+            <div class="col-12 mb-3 d-grid gap-2">
+                <button type="submit" class="btn btn-primary user-action">
+                    {% trans "Registrar Cuenta" %}
+                </button>
+            </div>
+            {% if AUTH_SELF_RECOVERY %}
+            <div class="col-12 mb-3 d-grid gap-2">
+                <a href="{% url 'account:recovery' %}{% if form.data.username != '' %}?username={{ form.data.username }}{% endif %}" class="btn btn-danger user-action">
+                    {% trans "Recuperar Acceso" %}
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </form>
+</div>
+{% endblock %}

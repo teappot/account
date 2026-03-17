@@ -1,0 +1,26 @@
+{% load i18n %}
+
+<ul class="nav nav-underline nav-fill">
+    {% if request.user.is_authenticated %}
+        <li class="nav-item">
+            <a type="button" class="nav-link" href="{% url AUTH_DEFAULT_HOME %}">
+                {{ request.user.username }}
+            </a>
+        </li>
+    {% else %}
+        {% if AUTH_BACKOFFICE %}
+        <li class="nav-item">
+            <a type="button" class="nav-link" href="{% url 'account:login' %}">
+                {% trans "Iniciar Sesión" %}
+            </a>
+        </li>
+        {% endif %}
+        {% if AUTH_SELF_CREATE %}
+        <li class="nav-item">
+            <a type="button" class="nav-link" href="{% url 'account:register' %}">
+                {% trans "Crear Cuenta" %}
+            </a>
+        </li>
+        {% endif %}
+    {% endif %}
+</ul>

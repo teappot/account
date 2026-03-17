@@ -1,0 +1,23 @@
+{% extends "account/form.html" %}
+{% load i18n %}
+
+{% block form %}
+<div class="card-title">
+    <h1>{% trans "Solicitar Acceso" %}</h1>
+</div>
+<hr />
+<div class="col-12">
+    <form class="form-horizontal" method="post" action="." hx-boost="false">
+        
+        {{ block.super }}
+
+        <div class="row form-group">
+            <div class="col-12 mb-3 d-grid gap-2">
+                <button type="submit" class="btn btn-primary user-action">
+                    {% trans "Solicitar Acceso" %}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

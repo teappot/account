@@ -1,0 +1,49 @@
+{% extends "account/form.html" %}
+{% load i18n %}
+
+{% block form %}
+<script src="https://accounts.google.com/gsi/client" async></script>
+<div class="card-title">
+    <h1>{% trans "Iniciar Sesión" %}</h1>
+</div>
+<hr />
+<div class="col-12">
+    <form class="form-horizontal" method="post" action="." hx-boost="false">
+        
+        {{ block.super }}
+
+        <div class="row form-group">
+            <div class="col-12 mb-3 d-grid gap-2">
+                <button type="submit" class="btn btn-primary user-action">
+                    {% trans "Iniciar Sesión" %}
+                </button>
+            </div>
+            {% if AUTH_SELF_RECOVERY %}
+            <div class="col-12 mb-3 d-grid gap-2">
+                <a href="{% url 'account:recovery' %}{% if form.data.username != '' %}?username={{ form.data.username }}{% endif %}" class="btn btn-danger user-action">
+                    {% trans "Recuperar Acceso" %}
+                </a>
+            </div>
+            {% endif %}
+
+            <div id="g_id_onload"
+                data-client_id="373499618898-lilaabd3o6p47jbbqefng414ancn8iuj.apps.googleusercontent.com"
+                data-context="signin"
+                data-ux_mode="popup"
+                data-login_uri="{% url 'account:auth-google' %}"
+                data-auto_select="false"
+                data-itp_support="false">
+            </div>
+
+            <div class="g_id_signin"
+                data-type="standard"
+                data-shape="rectangular"
+                data-theme="outline"
+                data-text="signin_with"
+                data-size="large"
+                data-logo_alignment="left">
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

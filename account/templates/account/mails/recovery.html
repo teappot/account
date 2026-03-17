@@ -1,0 +1,29 @@
+{# @var username #}
+{# @var url #}
+
+{% extends "mail.html" %}
+{% load i18n %}
+
+{% block mail %}
+<h1>{{ username }}</h1>
+<p>
+    Hemos generado un link para que puedas acceder a tu cuenta y cambiar tu password:
+</p>
+<p>
+    <a href="{{ url }}" target="_blank">
+        {{ url }}
+    </a>
+</p>
+    <strong>Este enlace expirará en {{ AUTH_TASK_TOKEN_LIFETIME }} minutos.</strong> Si no restableces tu password dentro de ese plazo, deberás solicitar un nuevo enlace.
+</p>
+<p>
+    Atentamente,
+    <br/>
+    El equipo de {{ APP_NAME }}
+</p>
+<p>
+    <small>
+        Si no solicitaste este restablecimiento, puedes ignorar este correo electrónico. Tu password permanecerá sin cambios.
+    </small>
+</p>
+{% endblock %}

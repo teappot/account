@@ -1,0 +1,27 @@
+{% load i18n %}
+{% load selectors %}
+
+{% load user %}
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="{{ settings.AUTH_DEFAULT_REDIRECT }}" hx-boost="false">
+            {% if APP_LOGO %}<img src="{{ APP_LOGO }}" alt="{{ APP_TITLE }}">{% endif %}
+            <div style="display: inline-block;">
+                <h2>{{ APP_TITLE }}</h2>
+                {% if APP_SUBTITLE %}<small>{{ APP_SUBTITLE }}</small>{% endif %}
+            </div>
+        </a>
+        <div class="offcanvas-header">
+            <div class="offcanvas-body" id="top-menu">
+                <div class="navbar-nav flex-grow-1 justify-content-end">
+                    <div class="mt-1 mt-lg-0 ms-lg-1">
+                        {% selector_lang %}
+                    </div>
+                    <div class="mt-1 mt-lg-0 ms-lg-1">
+                        {% selector_theme DARKMODE %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,25 @@
+{% extends "account/page.html" %}
+{% load i18n %}
+
+{% block page %}
+<div class="card p-4">
+    <div class="card-body">
+        <div class="card-title">
+            <h1>{% trans "Solicitud de Acceso" %}</h1>
+        </div>
+        <hr />
+        <div class="row alert alert-info">
+            <div class="col p-0 d-flex align-items-start">
+                <div class="d-inline-flex">
+                    <i class="bi bi-info-circle-fill"></i> 
+                </div>
+                <div>
+                    {% trans "<b>Revisa tu correo electrónico</b>: Te hemos enviado un enlace para restablecer tu password a la dirección de correo electrónico asociada a tu cuenta" %}
+                </div>
+            </div>
+        </div>
+        <small class="d-block mb-3">{% trans "<b>Verifica tu carpeta de spam</b>: Si no encuentras el correo electrónico en tu bandeja de entrada, revisa tu carpeta de spam o correo no deseado." %}</small>
+        <small class="d-block mb-0">{% trans "<b>El enlace caduca</b>: El enlace tiene una validez limitada. Si no lo utilizas pronto, deberás solicitar uno nuevo." %}</small>
+    </div>
+</div>
+{% endblock %}

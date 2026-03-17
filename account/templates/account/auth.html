@@ -1,0 +1,31 @@
+{% extends HX_BOOSTED|yesno:"hx-boosted.html,html.html" %}
+
+{% load breadcrumbs %}
+
+{% block header %}
+{% include "header.html" %}
+{% endblock %}
+
+{% block body %}
+<div id="content">
+    {% if crumbs %}
+    <div class="bg-body-tertiary py-1">
+        <div class="container-fluid">
+            <div class="container">
+                {% breadcrumbs crumbs %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <article>
+        <div class="container-fluid">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </article>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include "footer.html" %}
+{% endblock %}

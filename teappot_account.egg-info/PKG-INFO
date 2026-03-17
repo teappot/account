@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: teappot-account
+Version: 0.1.1
+Summary: Teappot Account
+Author-email: Conway Build & Learn <helloworld@conway.cl>
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: google-auth>=2.37.0
