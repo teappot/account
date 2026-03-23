@@ -173,35 +173,3 @@ class RecoveryForm(forms.Form):
             raise forms.ValidationError(_("El token está expirado "))
 
         return cleaned_data
-    
-
-"""
-class ChangePasswordForm(forms.Form):
-    email = forms.EmailField( widget=forms.TextInput(
-        attrs={ 'readonly':True, 'max_length':96,'class': 'form-control {CLASS_TEXT_LOWERCASE}' } ) )
-    new_password = forms.CharField(label='Nuevo Password',widget=forms.PasswordInput(
-        attrs={ 'required':True, 'max_length':30,'class': f"{CLASS_FORM_CONTROL}" }) )
- 
-    def clean_new_password(self):
-        if len(self.cleaned_data['new_password']) < 6:
-            raise forms.ValidationError("El password debe tener al menos 6 caracteres")
-    
-    
-class ProfileForm(forms.Form):        
-    first_name = forms.CharField(label=_('Nombre'), widget=forms.TextInput(
-        attrs={ 'max_length':48, 'class': f"{CLASS_FORM_CONTROL}" } ), required=False )
-    last_name = forms.CharField(label=_('Apellido'), widget=forms.TextInput(
-        attrs={ 'max_length':48, 'class': f"{CLASS_FORM_CONTROL}" } ), required=False )
-        
-    def clean_first_name(self):
-        if len(self.cleaned_data['first_name']) == 0:
-            raise forms.ValidationError(_("El nombre no puede est�r vac�o"))
-        
-        return self.cleaned_data['first_name']
-    
-    def clean_last_name(self):
-        if len(self.cleaned_data['last_name']) < 2:
-            raise forms.ValidationError(_("El apellido no puede est�r vac�o"))
-        
-        return self.cleaned_data['last_name']
-"""

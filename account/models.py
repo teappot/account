@@ -9,14 +9,13 @@ from datetime import timedelta
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.template import engines
+from django.contrib.auth.models import AbstractUser
 
-class UserAbstract(TeaModelAbstract):
+class TeaAccountAbstract(TeaModelAbstract):
 
-    IMAGEPATH = "user/"
+    IMAGEPATH = "account/"
     VIEWNAME = "account:user"
     PAGE = 1
-
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
 
     lang = models.ForeignKey(Lang, on_delete=models.CASCADE, default=1)
     timezone = models.CharField(max_length=10, default="GMT")
