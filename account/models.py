@@ -11,18 +11,32 @@ from django.conf import settings
 from django.template import engines
 from django.contrib.auth.models import AbstractUser
 
-class TeaAccountAbstract(TeaModelAbstract):
+class TeaAccountAbstract(AbstractUser, TeaModelAbstract):
 
-    IMAGEPATH = "account/"
+    IMAGEPATH = "account"
     VIEWNAME = "account:user"
     PAGE = 1
-
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
-
+    
     lang = models.ForeignKey(Lang, on_delete=models.CASCADE, default=1)
     timezone = models.CharField(max_length=10, default="GMT")
 
     image = models.ImageField(upload_to=ImageHelper.rename_to_uuid, blank=True, null=True, default=None)
+
+    groups = models.ManyToManyField(
+        'auth.Group',
+        related_name=f"{self.IMAGEPATH}_groups",
+        blank=True,
+        help_text='The groups this user belongs to.',
+        related_query_name=f"{self.IMAGEPATH}_user",
+    )
+
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        related_name=f"{self.IMAGEPATH}_permissions",
+        blank=True,
+        help_text='Specific permissions for this user.',
+        related_query_name=f"{self.IMAGEPATH}_user",
+    )
 
     @classmethod
     def get(cls, description_class, slug, lang, page=1, is_published=True):
