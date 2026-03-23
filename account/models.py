@@ -24,18 +24,18 @@ class TeaAccountAbstract(AbstractUser, TeaModelAbstract):
 
     groups = models.ManyToManyField(
         'auth.Group',
-        related_name=f"{self.IMAGEPATH}_groups",
+        related_name=f"{IMAGEPATH}_groups",
         blank=True,
         help_text='The groups this user belongs to.',
-        related_query_name=f"{self.IMAGEPATH}_user",
+        related_query_name=f"{IMAGEPATH}_user",
     )
 
     user_permissions = models.ManyToManyField(
         'auth.Permission',
-        related_name=f"{self.IMAGEPATH}_permissions",
+        related_name=f"{IMAGEPATH}_permissions",
         blank=True,
         help_text='Specific permissions for this user.',
-        related_query_name=f"{self.IMAGEPATH}_user",
+        related_query_name=f"{IMAGEPATH}_user",
     )
 
     @classmethod
