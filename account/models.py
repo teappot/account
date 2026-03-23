@@ -11,11 +11,13 @@ from django.conf import settings
 from django.template import engines
 from django.contrib.auth.models import AbstractUser
 
-class TeaAccountAbstract(AbstractUser, TeaModelAbstract):
+class TeaAccountAbstract(TeaModelAbstract):
 
     IMAGEPATH = "account/"
     VIEWNAME = "account:user"
     PAGE = 1
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
 
     lang = models.ForeignKey(Lang, on_delete=models.CASCADE, default=1)
     timezone = models.CharField(max_length=10, default="GMT")
