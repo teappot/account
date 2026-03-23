@@ -11,7 +11,7 @@ from django.conf import settings
 from django.template import engines
 from django.contrib.auth.models import AbstractUser
 
-class TeaAccountAbstract(TeaModelAbstract):
+class TeaAccountAbstract(AbstractUser, TeaModelAbstract):
 
     IMAGEPATH = "account/"
     VIEWNAME = "account:user"
