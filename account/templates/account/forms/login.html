@@ -48,12 +48,12 @@
                                     <i class="bi bi-arrow-left"></i>
                                 </button>
                                 {% if AUTH_SELF_CREATE %}
-                                <a href="{% url 'account:register' %}" class="btn btn-secondary user-action flex-grow-1">
+                                <a href="{% url 'account:register' %}" class="btn btn-outline-secondary user-action flex-grow-1">
                                     {% trans "Registrarse" %}
                                 </a>
                                 {% endif %}
                                 {% if AUTH_SELF_RECOVERY %}
-                                <a href="{% url 'account:recovery' %}{% if form.data.username|length > 0 %}?username={{ form.data.username }}{% endif %}" class="btn btn-danger user-action flex-grow-1">
+                                <a href="{% url 'account:recovery' %}{% if form.data.username|length > 0 %}?username={{ form.data.username }}{% endif %}" class="btn btn-outline-danger user-action flex-grow-1">
                                     {% trans "Recuperar Acceso" %}
                                 </a>
                                 {% endif %}
