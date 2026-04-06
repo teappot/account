@@ -43,23 +43,19 @@
                             </div>
 
                             {% if AUTH_SELF_CREATE or AUTH_SELF_RECOVERY %}
-                                <hr/>
-                                <div class="btn-group col-12">
+                            <hr/>
+                            <div class="btn-group col-12 mb-3">
                                 {% if AUTH_SELF_CREATE %}
-                                <div class="col-12 mb-3 d-grid gap-2">
-                                    <a href="{% url 'account:register' %}" class="btn btn-primary user-action">
-                                        {% trans "Registrarse" %}
-                                    </a>
-                                </div>
+                                <a href="{% url 'account:register' %}" class="btn btn-primary user-action">
+                                    {% trans "Registrarse" %}
+                                </a>
                                 {% endif %}
                                 {% if AUTH_SELF_RECOVERY %}
-                                <div class="col-12 mb-3 d-grid gap-2">
-                                    <a href="{% url 'account:recovery' %}{% if form.data.username|length > 0 %}?username={{ form.data.username }}{% endif %}" class="btn btn-danger user-action">
-                                        {% trans "Recuperar Acceso" %}
-                                    </a>
-                                </div>
+                                <a href="{% url 'account:recovery' %}{% if form.data.username|length > 0 %}?username={{ form.data.username }}{% endif %}" class="btn btn-danger user-action">
+                                    {% trans "Recuperar Acceso" %}
+                                </a>
                                 {% endif %}
-                                </div>
+                            </div>
                             {% endif %}
                         </div>
                     </form>
