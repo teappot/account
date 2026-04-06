@@ -22,7 +22,23 @@
                                     {% trans "Solicitar Acceso" %}
                                 </button>
                             </div>
+                            {% if AUTH_SELF_CREATE or AUTH_SELF_RECOVERY %}
+                            <div class="btn-group col-12 mb-3 d-flex">
+                                <button onclick="history.back()" class="btn btn-secondary user-action flex-grow-0">
+                                    <i class="bi bi-arrow-left"></i>
+                                </button>
+                                {% if AUTH_SELF_CREATE %}
+                                <a href="{% url 'account:register' %}" class="btn btn-secondary user-action flex-grow-1">
+                                    {% trans "Registrarse" %}
+                                </a>
+                                {% endif %}
+                                <a href="{% url 'account:login' %}" class="btn btn-outline-secondary user-action flex-grow-1">
+                                    {% trans "Iniciar Sesión" %}
+                                </a>
+                            </div>
+                            {% endif %}
                         </div>
+
                     </form>
                 </div>
             </div>
