@@ -1,7 +1,7 @@
-{% extends "account/form.html" %}
+{% extends "account/auth.html" %}
 {% load i18n %}
 
-{% block form %}
+{% block content %}
 <div class="card-title">
     <h1>{% trans "Registrar Cuenta" %}</h1>
 </div>
@@ -9,7 +9,7 @@
 <div class="col-12">
     <form class="form-horizontal" method="post" action="." hx-boost="false">
         
-        {{ block.super }}
+        {% include "teacore/form.html" with form=form %}
 
         <div class="row form-group">
             <div class="col-12 mb-3 d-grid gap-2">

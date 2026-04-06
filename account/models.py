@@ -17,7 +17,7 @@ class TeaAccountAbstract(TeaModelAbstract):
     VIEWNAME = "account:user"
     PAGE = 1
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
 
     lang = models.ForeignKey(Lang, on_delete=models.CASCADE, default=1)
     timezone = models.CharField(max_length=10, default="GMT")
