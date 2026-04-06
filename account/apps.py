@@ -21,10 +21,10 @@ class AuthenticationConfig(AppConfig):
         settings.AUTH_SELF_RECOVERY = os.getenv('AUTH_SELF_RECOVERY', "False") == "True"
         settings.AUTH_AUTO_ACTIVATE = os.getenv('AUTH_AUTO_ACTIVATE', "False") == "True"
         settings.AUTH_TASK_TOKEN_LIFETIME = int(os.getenv('AUTH_TASK_TOKEN_LIFETIME', 60))
+        settings.AUTH_GOOGLE_OAUTH_CLIENT_ID = os.getenv('AUTH_GOOGLE_OAUTH_CLIENT_ID', None)
         
         settings.USER_PAGINATION = os.getenv('USER_PAGINATION', 20)
         settings.USER_DEFAULT_HOME = os.getenv('USER_DEFAULT_HOME', None)
-        settings.GOOGLE_OAUTH_CLIENT_ID = os.getenv('GOOGLE_OAUTH_CLIENT_ID', None)
 
         settings.TEMPLATES[0]["OPTIONS"]["libraries"].update({
             "usertoolbar": "account.customtags.user",

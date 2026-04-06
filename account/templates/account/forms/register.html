@@ -38,9 +38,9 @@
                                 </a>
                             </div>
 
-                            {% if GOOGLE_OAUTH_CLIENT_ID %}
+                            {% if AUTH_GOOGLE_OAUTH_CLIENT_ID %}
                             <div id="g_id_onload"
-                                data-client_id="{{ GOOGLE_OAUTH_CLIENT_ID }}"
+                                data-client_id="{{ AUTH_GOOGLE_OAUTH_CLIENT_ID }}"
                                 data-context="signin"
                                 data-ux_mode="popup"
                                 data-login_uri="{% url 'account:auth-google' %}"
