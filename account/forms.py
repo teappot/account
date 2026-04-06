@@ -118,7 +118,7 @@ class UserTaskRequestForm(forms.Form):
     
     username = forms.CharField(
         label = _(f"{LABEL_USERNAME}"),
-        widget=forms.TextInput(attrs={ 'required':True, 'max_length':96, 'class': f"{CLASS_FORM_CONTROL} {CLASS_TEXT_LOWERCASE}" } ) 
+        widget=forms.TextInput(attrs={ 'placeholder': _(f"{LABEL_USERNAME}"), 'required':True, 'max_length':96, 'class': f"{CLASS_FORM_CONTROL} {CLASS_TEXT_LOWERCASE}" } ) 
     )
 
     def clean(self):

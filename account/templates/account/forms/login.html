@@ -24,7 +24,7 @@
                             </div>
                             {% if AUTH_SELF_RECOVERY %}
                             <div class="col-12 mb-3 d-grid gap-2">
-                                <a href="{% url 'account:recovery' %}{% if form.data.username != '' %}?username={{ form.data.username }}{% endif %}" class="btn btn-danger user-action">
+                                <a href="{% url 'account:recovery' %}{% if form.data.username|length > 0 %}?username={{ form.data.username }}{% endif %}" class="btn btn-danger user-action">
                                     {% trans "Recuperar Acceso" %}
                                 </a>
                             </div>
