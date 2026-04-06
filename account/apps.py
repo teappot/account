@@ -24,7 +24,7 @@ class AuthenticationConfig(AppConfig):
         
         settings.USER_PAGINATION = os.getenv('USER_PAGINATION', 20)
         settings.USER_DEFAULT_HOME = os.getenv('USER_DEFAULT_HOME', None)
-
+        settings.GOOGLE_OAUTH_CLIENT_ID = os.getenv('GOOGLE_OAUTH_CLIENT_ID', None)
 
         settings.TEMPLATES[0]["OPTIONS"]["libraries"].update({
             "usertoolbar": "account.customtags.user",

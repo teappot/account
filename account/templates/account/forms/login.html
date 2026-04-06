@@ -8,7 +8,7 @@
         <div class="card p-1 p-md-4">
             <div class="card-body">
                 <div class="card-title">
-                    <h1>{% trans "Iniciar Sesión" %}</h1>
+                    <h3>{% trans "Iniciar Sesión" %}</h3>
                 </div>
                 <hr />
                 <div class="col-12">
@@ -22,24 +22,6 @@
                                 <button type="submit" class="btn btn-primary user-action">
                                     {% trans "Iniciar Sesión" %}
                                 </button>
-                            </div>
-
-                            <div id="g_id_onload"
-                                data-client_id="373499618898-lilaabd3o6p47jbbqefng414ancn8iuj.apps.googleusercontent.com"
-                                data-context="signin"
-                                data-ux_mode="popup"
-                                data-login_uri="{% url 'account:auth-google' %}"
-                                data-auto_select="false"
-                                data-itp_support="false">
-                            </div>
-
-                            <div class="g_id_signin mb-3"
-                                data-type="standard"
-                                data-shape="rectangular"
-                                data-theme="outline"
-                                data-text="signin_with"
-                                data-size="large"
-                                data-logo_alignment="left">
                             </div>
 
                             {% if AUTH_SELF_CREATE or AUTH_SELF_RECOVERY %}
@@ -57,6 +39,26 @@
                                     {% trans "Recuperar Acceso" %}
                                 </a>
                                 {% endif %}
+                            </div>
+                            {% endif %}
+
+                            {% if GOOGLE_OAUTH_CLIENT_ID %}
+                            <div id="g_id_onload"
+                                data-client_id="{{ GOOGLE_OAUTH_CLIENT_ID }}"
+                                data-context="signin"
+                                data-ux_mode="popup"
+                                data-login_uri="{% url 'account:auth-google' %}"
+                                data-auto_select="false"
+                                data-itp_support="false">
+                            </div>
+
+                            <div class="g_id_signin"
+                                data-type="standard"
+                                data-shape="rectangular"
+                                data-theme="outline"
+                                data-text="signin_with"
+                                data-size="large"
+                                data-logo_alignment="left">
                             </div>
                             {% endif %}
                         </div>
