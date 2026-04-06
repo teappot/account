@@ -101,9 +101,12 @@ def register(request):
 
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
+            email = form.cleaned_data['email']
+            
+            user = User.objects.create_user(username=username, email=email, password=password)
+            user.save()
             
             if settings.AUTH_AUTO_ACTIVATE:
-                
                 user = auth.authenticate(username=username, password=password)
                 auth.login(request, user)
 
