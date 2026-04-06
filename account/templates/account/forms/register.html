@@ -13,6 +13,7 @@
                 <div class="col-12">
                     <form class="form-horizontal" method="post" action="." hx-boost="false">
                         
+                        <input type="hidden" name="next" value="{{ NEXT }}" />
                         {% include "teacore/form.html" with form=form %}
 
                         <div class="row form-group">
@@ -21,13 +22,21 @@
                                     {% trans "Registrar Cuenta" %}
                                 </button>
                             </div>
-                            {% if AUTH_SELF_RECOVERY %}
-                            <div class="col-12 mb-3 d-grid gap-2">
-                                <a href="{% url 'account:recovery' %}{% if form.data.username != '' %}?username={{ form.data.username }}{% endif %}" class="btn btn-danger user-action">
-                                    {% trans "Recuperar Acceso" %}
-                                </a>
+                            <hr/>
+                            <div class="btn-group col-12">
+                                <div class="col-12 mb-3 d-grid gap-2">
+                                    <a href="{% url 'account:login' %}" class="btn btn-primary user-action">
+                                        {% trans "Iniciar Sesión" %}
+                                    </a>
+                                </div>
+                                {% if AUTH_SELF_RECOVERY %}
+                                <div class="col-12 mb-3 d-grid gap-2">
+                                    <a href="{% url 'account:recovery' %}{% if form.data.username|length > 0 %}?username={{ form.data.username }}{% endif %}" class="btn btn-danger user-action">
+                                        {% trans "Recuperar Acceso" %}
+                                    </a>
+                                </div>
+                                {% endif %}
                             </div>
-                            {% endif %}
                         </div>
                     </form>
                 </div>

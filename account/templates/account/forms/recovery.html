@@ -13,6 +13,7 @@
                 <div class="col-12">
                     <form class="form-horizontal" method="post" action="." hx-boost="false">
                         
+                        <input type="hidden" name="next" value="{{ NEXT }}" />
                         {% include "teacore/form.html" with form=form %}
 
                         <div class="row form-group">
