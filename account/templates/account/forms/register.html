@@ -22,13 +22,15 @@
                                     {% trans "Registrar Cuenta" %}
                                 </button>
                             </div>
-                            <hr/>
                             <div class="btn-group col-12 mb-3">
-                                <a href="{% url 'account:login' %}" class="btn btn-primary user-action">
+                                <button onclick="history.back()" class="btn btn-secondary user-action">
+                                    <i class="fa fa-arrow-left"></i>
+                                </button>
+                                <a href="{% url 'account:login' %}" class="btn btn-outline-secondary user-action">
                                     {% trans "Iniciar Sesión" %}
                                 </a>
                                 {% if AUTH_SELF_RECOVERY %}
-                                <a href="{% url 'account:recovery' %}{% if form.data.username|length > 0 %}?username={{ form.data.username }}{% endif %}" class="btn btn-danger user-action">
+                                <a href="{% url 'account:recovery' %}{% if form.data.username|length > 0 %}?username={{ form.data.username }}{% endif %}" class="btn btn-outline-danger user-action">
                                     {% trans "Recuperar Acceso" %}
                                 </a>
                                 {% endif %}

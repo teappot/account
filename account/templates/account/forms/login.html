@@ -43,10 +43,9 @@
                             </div>
 
                             {% if AUTH_SELF_CREATE or AUTH_SELF_RECOVERY %}
-                            <hr/>
                             <div class="btn-group col-12 mb-3">
                                 {% if AUTH_SELF_CREATE %}
-                                <a href="{% url 'account:register' %}" class="btn btn-primary user-action">
+                                <a href="{% url 'account:register' %}" class="btn btn-secondary user-action">
                                     {% trans "Registrarse" %}
                                 </a>
                                 {% endif %}
