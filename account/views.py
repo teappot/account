@@ -1,5 +1,7 @@
 import secrets
 import string
+from django.shortcuts import redirect
+from django.urls import reverse
 
 from django.http import HttpRequest
 from django.shortcuts import render
@@ -161,9 +163,19 @@ def recovery_validate(request, username, token):
             password_new = form.cleaned_data['password_new']
             user_task_token.use_recovery_token(password_new)
 
-            messages.info(request, _("Password cambiado correctamente. Inicie sesión en la aplicación con su nuevo password."))
+            messages.info(request, _("Password actualizado correctamente."))
             
-            return hx_redirect("account:login")
+            user = auth.authenticate(username=username, password=password_new)
+            auth.login(request, user)
+            
+            redirect = request.POST.get("next", None)
+            try:
+                if redirect is not None:
+                    return hx_redirect(redirect)
+            except Exception:
+                pass
+            
+            return hx_redirect(settings.AUTH_DEFAULT_REDIRECT)
     else:   
         form = RecoveryForm()
 
