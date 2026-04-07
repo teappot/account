@@ -75,10 +75,9 @@ class CreateForm(forms.Form):
         if User.objects.filter(username=username).count() > 0:
             raise forms.ValidationError(_("Este nombre de usuario ya está utilizado. Intente iniciar sesión o recuperar su acceso."))
 
-        if not settings.AUTH_EMAIL_AS_USERNAME:
-            if not re.match(r'^[a-zA-Z0-9._]+$', username):
-                raise forms.ValidationError(_("El nombre de usuario solo puede contener letras, números, puntos y guiones bajos."))
-        
+        if not settings.AUTH_EMAIL_AS_USERNAME and not re.match(r'^[a-zA-Z0-9._]+$', username):
+            raise forms.ValidationError(_("El nombre de usuario solo puede contener letras, números, puntos y guiones bajos."))
+
         return username
 
     def clean_email(self):
@@ -107,7 +106,7 @@ class CreateForm(forms.Form):
 
     def clean(self):
         if settings.AUTH_EMAIL_AS_USERNAME:
-            self.cleaned_data['username'] = self.cleaned_data.get('email')
+            self.cleaned_data['username'] = self.cleaned_data['username'].lower()
         if not settings.AUTH_AUTO_ACTIVATE:
             password = ''.join(random.choices(string.ascii_letters + string.digits, k=20))
             self.cleaned_data['password'] = password
