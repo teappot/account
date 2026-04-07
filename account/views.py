@@ -118,7 +118,7 @@ def register(request):
             return render(request, "account/pages/recovery.html")
         
     else:
-        form = CreateForm(request.GET) if request.GET else CreateForm()
+        form = CreateForm(request.GET) if request.GET.get("username", None) else CreateForm()
 
     return render(request, "account/forms/register.html", { 'form': form })
 
