@@ -39,7 +39,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         password = validated_data.pop("password1")
         validated_data.pop("password2")
 
-        user = User.objects.create_user(password=password, email=username, is_active=False, **validated_data)
+        user = User.objects.create_user(password=password, email=username, =False, **validated_data)
         recovery_send_mail(user)
         
         return user

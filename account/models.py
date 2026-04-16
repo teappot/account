@@ -1,5 +1,6 @@
 import os, uuid
 import re
+from django.utils.crypto import get_random_string
 from django.core.paginator import Paginator
 from django.db import models
 from teacore.models import ImageHelper, Lang, TeaModelAbstract
@@ -23,6 +24,19 @@ class TeaAccountAbstract(TeaModelAbstract):
     timezone = models.CharField(max_length=10, default="GMT")
 
     image = models.ImageField(upload_to=ImageHelper.rename_to_uuid, blank=True, null=True, default=None)
+
+    @classmethod
+    def guest(cls, request):
+        guest, _ = User.objects.get_or_create(
+            username = f"guest_{request.session.session_key}",
+            defaults= {
+                'is_active': True,
+                'email': f"guest_{request.session.session_key}@guest",
+                'password': get_random_string(length=32)
+            }
+        )
+        
+        return guest
 
     @classmethod
     def get(cls, description_class, slug, lang, page=1, is_published=True):
@@ -89,7 +103,7 @@ class TeaAccountAbstract(TeaModelAbstract):
         
         super().save(*args, **kwargs)
     
-    def delete(self, *args, **kwargs):
+    def delete(self, soft=True, *args, **kwargs):
         previous = type(self).objects.get(pk=self.pk)
         filepath = os.path.join(settings.MEDIA_ROOT, previous.image.name)
         if os.path.isfile(filepath):
